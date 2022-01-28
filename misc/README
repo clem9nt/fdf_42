@@ -1,0 +1,7 @@
+Usage:
+
+Run all the maps of the folder:
+    $ chmod +x all.sh
+    $ sh all.sh
+Run an arbitrary map:
+    $ ./fdf maps/map.fdf

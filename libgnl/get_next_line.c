@@ -6,9 +6,10 @@
 /*   By: cvidon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 12:14:07 by cvidon            #+#    #+#             */
-/*   Updated: 2022/01/26 14:15:55 by clem9nt          888   ########.fr       */
+/*   Updated: 2022/01/28 18:34:36 by clem9nt          888   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*newline(char *temp)
@@ -41,12 +42,12 @@ char	*newtemp(char *temp)
 	return (free(temp), new);
 }
 
-char    *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	static char *temp[1024];
-	char        *line;
-	char        *buf;
-	long        r;
+	static char	*temp[OPEN_MAX];
+	char		*line;
+	char		*buf;
+	long		r;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);

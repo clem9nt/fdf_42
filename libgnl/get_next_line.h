@@ -6,26 +6,47 @@
 /*   By: cvidon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 12:14:07 by cvidon            #+#    #+#             */
-/*   Updated: 2022/01/26 13:29:27 by clem9nt          888   ########.fr       */
+/*   Updated: 2022/01/28 18:34:39 by clem9nt          888   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-/* Prod */
-# include <unistd.h>
-# include <stdlib.h>
-/* Dev */
-# include <stdio.h>
-# include <fcntl.h>
+/*
+ ** =========[ Defines ]===========
+ */
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2048
 # endif
 
-/* get_next_line.c */
+/*
+ ** =========[ Includes ]==========
+ */
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <limits.h>
+
+/*
+ ** =========[ Prototypes ]========
+ **
+ ** Commented function means static function.
+ */
+
+/*
+ ** [ GET_NEXT_LINE.C ]
+ */
+
+/* char	*newline(char *temp) */
+/* char	*newtemp(char *temp) */
 char	*get_next_line(int fd);
-/* get_next_line_utils.c */
+
+/*
+ ** [ GET_NEXT_LINE_UTILS.C ]
+ */
+
 int		ft_has_nl(char *str);
 size_t	ft_strlen_gnl(char *str);
 char	*ft_strdup_gnl(char *str);

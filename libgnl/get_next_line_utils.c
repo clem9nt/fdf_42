@@ -6,9 +6,10 @@
 /*   By: cvidon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 12:14:07 by cvidon            #+#    #+#             */
-/*   Updated: 2022/01/26 11:54:09 by clem9nt          888   ########.fr       */
+/*   Updated: 2022/01/28 18:34:42 by clem9nt          888   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "get_next_line.h"
 
 int	ft_has_nl(char *str)
@@ -62,7 +63,6 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	s3 = malloc (sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
 	if (!s3)
 		return (free(s1), NULL);
-
 	s1ptr = s1;
 	s3ptr = s3;
 	while (*s1)
