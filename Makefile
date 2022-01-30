@@ -1,8 +1,4 @@
-YELLOW:=\033[0;33m
-END:=\x1b[0m
-
-.PHONY : all clean fclean re
-
+# Sources
 SRCS = srcs/main.c \
 	   srcs/init.c \
 	   srcs/read.c \
@@ -15,43 +11,51 @@ SRCS = srcs/main.c \
 	   srcs/motion.c \
 	   srcs/security.c \
 
-OBJS = $(SRCS:.c=.o)
-
+# Compile
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+OBJS = $(SRCS:.c=.o)
 LIBRAIRIES = -L libmlx -lmlx -L libft -lft -L libgnl -lgnl
 FRAMEWORKS = -framework OpenGl -framework Appkit
 NAME = fdf
+
+# Cleanup
 RM = rm -f
+
+# Colors
+YELLOW:=\033[0;33m
+END:=\x1b[0m
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	@echo "${YELLOW}Libft compilation...${END}"
-	@make extra -C libft
-	@echo "${YELLOW}Libgnl compilation...${END}"
+	@make -C libft
+	@echo "$(YELLOW)Libft ready.$(END)"
 	@make -C libgnl
-	@echo "${YELLOW}Libmlx compilation...${END}"
+	@echo "$(YELLOW)Libgnl ready.$(END)"
 	@make -C libmlx 2>/dev/null
-	@echo "${YELLOW}Mandatory part compilation...${END}"
+	@echo "$(YELLOW)Libmlx ready.$(END)"
 	$(CC) $(CFLAGS) $(OBJS) $(LIBRAIRIES) $(FRAMEWORKS) -o $(NAME)
-	@echo "${YELLOW}Done.${END}"
+	@echo "$(YELLOW)Fdf ready.$(END)"
 
 clean :
-	@echo "${YELLOW}Remove libft objects...${END}"
 	@make clean -C libft
-	@echo "${YELLOW}Remove libgnl objects...${END}"
+	@echo "$(YELLOW)Libft objects removed.$(END)"
 	@make clean -C libgnl
-	@echo "${YELLOW}Remove libmlx objects...${END}"
+	@echo "$(YELLOW)Libgnl objects removed.$(END)"
 	@make clean -C libmlx
+	@echo "$(YELLOW)Libmlx objects removed.$(END)"
 	$(RM) $(OBJS)
+	@echo "$(YELLOW)Fdf objects removed.$(END)"
 
 fclean : clean
-	@echo "${YELLOW}Remove libft...${END}"
 	@make fclean -C libft
-	@echo "${YELLOW}Remove libgnl...${END}"
+	@echo "$(YELLOW)Libft removed.$(END)"
 	@make fclean -C libgnl
+	@echo "$(YELLOW)Libgnl removed.$(END)"
 	$(RM) $(NAME)
-	@echo "${YELLOW}Done.${END}"
+	@echo "$(YELLOW)Fdf removed.$(END)"
 
 re : fclean all
+
+.PHONY : all clean fclean re

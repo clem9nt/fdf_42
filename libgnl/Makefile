@@ -1,27 +1,26 @@
-.PHONY : all clean fclean re
-
 SRCS = get_next_line.c \
 	   get_next_line_utils.c
 
-OBJS = ${SRCS:.c=.o}
-NAME = libgnl.a
+# Compile
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -c
+OBJS = $(SRCS:.c=.o)
+NAME = libgnl.a
+
+# Cleanup
 RM = rm -f
 
-all : ${NAME}
+all : $(NAME)
 
-${NAME} : ${OBJS}
-	ar rcs ${NAME} ${OBJS}
-
-OBJS = ${SRCS:.c=.o}
-# ${OBJS} : ${SRCS}
-# 	${CC} ${CFLAGS} ${SRCS}
+$(NAME) : $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 clean :
-	${RM} ${OBJS}
+	$(RM) $(OBJS)
 
 fclean : clean
-	${RM} ${NAME}
+	$(RM) $(NAME)
 
 re : fclean all
+
+.PHONY : all clean fclean re
