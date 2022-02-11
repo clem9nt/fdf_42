@@ -6,7 +6,7 @@
 /*   By: clem9nt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 18:33:54 by clem9nt           #+#    #+#             */
-/*   Updated: 2022/01/28 18:33:55 by clem9nt          888   ########.fr       */
+/*   Updated: 2022/02/11 19:06:42 by clem             888   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,11 @@ void	ft_free(void *ptr)
 void	ft_backfree(int **tab, int index)
 {
 	while (index + 1)
-		free(tab[index--]);
+	{
+		free(tab[index]);
+		tab[index] = NULL;
+		index--;
+	}
 	free (tab);
 	tab = NULL;
 }
