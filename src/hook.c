@@ -23,12 +23,13 @@ int	ft_display(t_data *data)
 	if (data->win_ptr)
 	{
 		data->mlx_img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
-		data->address = mlx_get_data_addr(
-				data->mlx_img,
-				&data->bpp,
-				&data->linelen,
-				&data->endian
-				);
+		if (!data->mlx_img)
+		{
+			ft_backfree(data->values, data->height - 1);
+			ft_exit(MLX_ERR);
+		}
+		data->address = mlx_get_data_addr
+			(data->mlx_img, &data->bpp, &data->linelen, &data->endian);
 		ft_render(data);
 		if (data->level_motion)
 			ft_motion(data, &data->level);
